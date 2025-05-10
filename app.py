@@ -22,7 +22,7 @@ def get_iss_location():
 # display location in browser via google maps
 def display_location_in_browser(latitude: float, longitude: float):
     google_map_url = f"https://www.google.com/maps?q={latitude},{longitude}"
-    webbrowser.open(google_map_url)
+    webbrowser.open(google_map_url, new=0)
 
 
 if __name__ == "__main__":
@@ -30,6 +30,7 @@ if __name__ == "__main__":
         try:
             lat, long = get_iss_location()
             print(f"current ISS location: latitude {lat}, longitude {long}")
-            sleep(5)  # 5 sec refresh
+            display_location_in_browser(lat, long)
+            sleep(130)  # 3 min refresh
         except Exception as e:
             print(f"An error occurred: {e}")
